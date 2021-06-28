@@ -1,14 +1,11 @@
-CC = g++
-CFLAGS = -Wall -g
-stack : stack_main.o stack_unit.o
-	$(CC) $(CFLAGS) -o stack stack_main.o stack_unit.o
+CC=g++ 
+CFLAGS= -Wall -g #Flag for implicit rules. Turn on debug info
 
-stack_main.o : stack_main.cpp stack_unit.h
-	$(CC) $(CFLAGS) -c stack_main.cpp	
+stack: stack_main.o 
+	$(CC) $(CFLAGS)  -o  stack stack_main.o 
 
-stack_unit.o: stack_unit.cpp stack_unit.h
-	$(CC) $(CFLAGS) -c stack_unit.cpp	
+stack_main.o: stack_main.cpp stack_template.h
+	$(CC) $(CFLAGS)  -c stack_main.cpp 
 
 clean :
-	rm  stack_main.o stack_unit.o stack.exe
-	
+	rm  stack_main.o  stack.exe
