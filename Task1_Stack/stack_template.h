@@ -1,12 +1,12 @@
 #ifndef stack_template_h
 #define stack_template_h
 
-template <typename T> class sstack
+template <typename T> class stackOnArray
 {
 public:
 
-	sstack(int size = 10);
-	~sstack();
+	stackOnArray(int size = 10);
+	~stackOnArray();
 	bool push(T arg);
 	T pop();
 	int capacity();
@@ -21,14 +21,14 @@ private:
 	void allocmem(int size);
 };
 
-template <typename T> sstack<T>::sstack(int size)
+template <typename T> stackOnArray<T>::stackOnArray(int size)
 {
 	allocmem(size);
 	_top = -1;
 }
 
 
-template <typename T> sstack<T>::~sstack()
+template <typename T> stackOnArray<T>::~stackOnArray()
 {
 	delete _stack;
 	_stack = nullptr;
@@ -36,7 +36,7 @@ template <typename T> sstack<T>::~sstack()
 
 
 template <typename T>
-bool sstack<T>::push(T arg)
+bool stackOnArray<T>::push(T arg)
 {
 	if (_top == _size-1) return false;
 	
@@ -47,7 +47,7 @@ bool sstack<T>::push(T arg)
 }
 
 template <typename T>
-T sstack<T>::pop() 
+T stackOnArray<T>::pop() 
 {
 	if (_top == -1)
 	{
@@ -62,21 +62,21 @@ T sstack<T>::pop()
 
 
 template <typename T>
-int sstack<T>::capacity() 
+int stackOnArray<T>::capacity() 
 {
 	return _top + 1;
 }
 
 
 template <typename T>
-int sstack<T>::size()
+int stackOnArray<T>::size()
 {
 	return _size;
 }
 
 
 template <typename T>
-void sstack<T>::resize(int size) 
+void stackOnArray<T>::resize(int size) 
 {
 	delete _stack;
 	_stack = nullptr;
@@ -84,11 +84,10 @@ void sstack<T>::resize(int size)
 }
 
 template<typename T>
-void sstack<T>::allocmem(int size)
+void stackOnArray<T>::allocmem(int size)
 {
 	_stack = new T[size];
 	_size = size;
-
 }
 
 

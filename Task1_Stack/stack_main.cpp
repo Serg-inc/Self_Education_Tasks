@@ -9,8 +9,14 @@ int  main()
     cout <<  "Stack project run \n";
     
     int stack_size = 4;
-    sstack<int> Stack(stack_size);
-    cout << "Push data to Stack: \n";
+    
+    stackOnArray<int> Stack(stack_size);
+
+    cout << "Stack size: " << Stack.size() << "\n";
+    
+    cout << "Stack capacity: " << Stack.capacity() << "\n";
+
+    cout << "Push data to stack, write and press enter  \n";
 
     while (Stack.capacity() < stack_size) 
     {
@@ -19,16 +25,17 @@ int  main()
         Stack.push(num);
     }
 
-    cout << "\n";
+    cout << "\n" << "Stack capacity: " << Stack.capacity() << "\n";
 
-    cout << "Pop data from Stack: \n";
+    cout << "\n" << "Pop data from Stack: \n";
 
     for(int i = 0; i< Stack.size(); i++)
     {
         cout << Stack.pop() << " ";
     }
 
-    
+    cout << "\n" << "Stack capacity: " << Stack.capacity() << "\n";
+
     cin.get(); // click enter for exit
     return 0;
 }
